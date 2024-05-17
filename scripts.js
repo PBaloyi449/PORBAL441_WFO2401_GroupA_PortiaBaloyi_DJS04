@@ -7,22 +7,32 @@ let matches = books; // Set matches to the list of all books
  * Creates a button element for a book preview.
  * This button includes the book's image, title, and author.
  */
-const createBookPreview = (book) => {
-    const { author, id, image, title } = book; // Destructure book properties
-    const element = document.createElement('button'); // Create a button element
-    element.classList = 'preview'; // Add the 'preview' class to the button
-    element.setAttribute('data-preview', id); // Set data-preview attribute with the book ID
+class BookPreview extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+    }
 
-    // Set the inner HTML of the button with the book's image, title, and author
-    element.innerHTML = `
-        <img class="preview__image" src="${image}" alt="Book cover of ${title}">
-        <div class="preview__info">
-            <h3 class="preview__title">${title}</h3>
-            <div class="preview__author">${authors[author]}</div>
-        </div>
-    `;
-    return element; // Return the created button element
-};
+    connectedCallback() {
+        const { author, id, image, title } = this.dataset;
+        
+        this.shadowRoot.innerHTML = `
+            <style>
+                /* Add styling for the component */
+            </style>
+            <button class="preview" data-preview="${id}">
+                <img class="preview__image" src="${image}" alt="Book cover of ${title}">
+                <div class="preview__info">
+                    <h3 class="preview__title">${title}</h3>
+                    <div class="preview__author">${author}</div>
+                </div>
+            </button>
+        `;
+    }
+}
+
+customElements.define('book-preview', BookPreview);
+
 
 /**
  * Renders a list of book previews to the page.
