@@ -43,9 +43,15 @@ const renderBooks = (bookList, startIndex = 0) => {
     const slicedBooks = bookList.slice(startIndex, startIndex + BOOKS_PER_PAGE); // Get the slice of books to render
 
     // Append each book preview to the document fragment
-    slicedBooks.forEach(book => fragment.appendChild(createBookPreview(book)));
+    slicedBooks.forEach(book => {
+        const bookPreview = new BookPreview(); // Create a new instance of the BookPreview Web Component
+        bookPreview.setAttribute('data-preview', book.id); // Set data-preview attribute with the book ID
+        fragment.appendChild(bookPreview); // Append the book preview to the fragment
+    });
+
     document.querySelector('[data-list-items]').appendChild(fragment); // Append the fragment to the list items container
 };
+
 
 /**
  * Populates a dropdown menu with options based on provided data.
