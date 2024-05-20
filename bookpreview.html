@@ -1,0 +1,47 @@
+<!-- Define the template for the book preview component -->
+<template id="book-preview-template">
+    <style>
+        /* CSS styles for the book preview component */
+        /* Encapsulate styles within the component */
+        .preview {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .preview:hover {
+            transform: scale(1.05);
+        }
+
+        .preview__image {
+            width: 100px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .preview__info {
+            flex: 1;
+        }
+
+        .preview__title {
+            margin: 0;
+        }
+
+        .preview__author {
+            margin: 5px 0;
+            color: #666;
+        }
+    </style>
+    <button class="preview">
+        <img class="preview__image" src="" alt="Book cover">
+        <div class="preview__info">
+            <h3 class="preview__title"></h3>
+            <div class="preview__author"></div>
+        </div>
+    </button>
+</template>
