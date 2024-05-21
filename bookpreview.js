@@ -1,22 +1,21 @@
-// Define the JavaScript logic for the book preview component
 class BookPreview extends HTMLElement {
-    constructor() {
-      super();
-    }
-    connectedCallback() {
-        this.innerHTML = `<dialog class="overlay" data-list-active>
-        <div class="overlay__preview"><img class="overlay__blur" data-list-blur src=""/><img class="overlay__image" data-list-image src=""/></div>
-        <div class="overlay__content">
-          <h3 class="overlay__title" data-list-title></h3>
-          <div class="overlay__data" data-list-subtitle></div>
-          <p class="overlay__data overlay__data_secondary" data-list-description></p>
-        </div>
-  
-        <div class="overlay__row">
-          <button class="overlay__button overlay__button_primary" data-list-close>Close</button>
-        </div>
-      </dialog>`
-    }
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+      this.innerHTML = `<dialog class="overlay" data-list-active>
+      <div class="overlay__preview"><img class="overlay__blur" data-list-blur src=""/><img class="overlay__image" data-list-image src=""/></div>
+      <div class="overlay__content">
+        <h3 class="overlay__title" data-list-title></h3>
+        <div class="overlay__data" data-list-subtitle></div>
+        <p class="overlay__data overlay__data_secondary" data-list-description></p>
+      </div>
+
+      <div class="overlay__row">
+        <button class="overlay__button overlay__button_primary" data-list-close>Close</button>
+      </div>
+    </dialog>`
+  }
 }
 
 customElements.define('book-preview-component', BookPreview);
